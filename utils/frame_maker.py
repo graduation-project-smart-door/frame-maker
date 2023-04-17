@@ -42,13 +42,11 @@ def define_face(frame):
     return []
 
 
-def video_to_frames(path: str, user_data) -> list:
+def video_to_frames(path: str, user_data, uuid_value) -> list:
     video_capture = cv2.VideoCapture()
     video_capture.open(path)
 
     frames = video_capture.get(cv2.CAP_PROP_FRAME_COUNT)
-
-    uuid_value = uuid.uuid1()
 
     current_path = os.path.join(PARENT_WORKDIR, "ml-js", "labels")
 
@@ -89,10 +87,10 @@ def video_to_frames(path: str, user_data) -> list:
     return sub_folders
 
 
-def start_make_frames(path: str, user_data) -> None:
+def start_make_frames(path: str, user_data, uuid_value: str) -> None:
     t1 = datetime.now()
 
-    video_to_frames(path, user_data)
+    video_to_frames(path, user_data, uuid_value)
 
     t2 = datetime.now()
 
