@@ -87,7 +87,7 @@ def video_to_frames(path: str, user_data, uuid_value) -> list:
     return sub_folders
 
 
-def start_make_frames(path: str, user_data, uuid_value: str) -> None:
+def start_make_frames(path: str, user_data, uuid_value: uuid.UUID) -> None:
     t1 = datetime.now()
 
     video_to_frames(path, user_data, uuid_value)
