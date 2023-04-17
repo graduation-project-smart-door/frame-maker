@@ -14,6 +14,7 @@ def create_start_app_handler(
     async def start_app() -> None:
         await connect_to_db(app, settings)
 
+    app.state.config = settings
     return start_app
 
 

@@ -1,11 +1,11 @@
 from typing import List
 
-from pydantic import BaseSettings, PostgresDsn
+from pydantic import BaseSettings
 
 
 class AppSettings(BaseSettings):
-    debug: bool = False
-    database_url: PostgresDsn
+    database_url: str
+    token: str
 
     allowed_hosts: List[str] = ['*']
 
