@@ -1,17 +1,15 @@
-FROM python:3.8
+FROM python:3.10
 
 ENV BOT_TOKEN=$BOT_TOKEN
 
 WORKDIR /code
 
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
 COPY requirements.txt /code
 
-RUN apt-get update && apt-get install -y python3-opencv
-RUN pip install tensorflow-intel
-RUN pip install opencv-python
-RUN pip install tensorflow-gpu==2.2.0
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install -r /code/requirements.txt
 
 COPY . /code
 
-CMD ["uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8081", "--reload"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081", "--reload"]
