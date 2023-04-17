@@ -7,3 +7,4 @@ class CreateUser(BaseModel):
     video: VideoType
     first_name: str
     last_name: str
+    person_id: str

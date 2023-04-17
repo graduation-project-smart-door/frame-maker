@@ -29,10 +29,10 @@ async def create_video(
 
     response = requests.get(url)
 
-    uuid_value = uuid.uuid4()
-
     with open("video.mp4", "wb") as file:
         file.write(response.content)
+
+    print(user)
 
     frame_maker.start_make_frames(
         'video.mp4',
@@ -40,12 +40,12 @@ async def create_video(
             'first_name': user.first_name,
             'last_name': user.last_name,
         },
-        uuid_value=uuid_value,
+        uuid_value=user.person_id,
     )
 
     os.remove('video.mp4')
 
-    label = f'{translit(user.first_name, language_code="ru", reversed=True)}_{translit(user.last_name, language_code="ru", reversed=True)}--{uuid_value}'
+    label = f'{translit(user.first_name, language_code="ru", reversed=True)}_{translit(user.last_name, language_code="ru", reversed=True)}--{user.person_id}'
 
     await user_repository.create(User(label=label))
     return {'message': 'success'}

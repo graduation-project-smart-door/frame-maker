@@ -42,7 +42,7 @@ def define_face(frame):
     return []
 
 
-def video_to_frames(path: str, user_data, uuid_value) -> list:
+def video_to_frames(path: str, user_data, uuid_value: str) -> list:
     video_capture = cv2.VideoCapture()
     video_capture.open(path)
 
@@ -87,7 +87,7 @@ def video_to_frames(path: str, user_data, uuid_value) -> list:
     return sub_folders
 
 
-def start_make_frames(path: str, user_data, uuid_value: uuid.UUID) -> None:
+def start_make_frames(path: str, user_data, uuid_value: str) -> None:
     t1 = datetime.now()
 
     video_to_frames(path, user_data, uuid_value)
