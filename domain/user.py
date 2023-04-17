@@ -1,8 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
+from pydantic import BaseModel
 
-@dataclass
-class User:
+
+class User(BaseModel):
     label: str
     id: Optional[int] = None
