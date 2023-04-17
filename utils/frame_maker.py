@@ -1,14 +1,13 @@
 import cv2
 import os
 import uuid
-import requests
 
 from pathlib import Path
 from datetime import datetime
 
 from transliterate import translit
 
-WORKDIR = Path(__file__).parent.parent.parent.parent.parent.resolve()
+WORKDIR = Path(__file__).parent.parent.resolve()
 PARENT_WORKDIR = os.path.split(os.path.abspath(WORKDIR))[0]
 
 WIDTH = 250  # To feed images to a neural network
@@ -51,7 +50,7 @@ def video_to_frames(path: str, user_data) -> list:
 
     uuid_value = uuid.uuid1()
 
-    current_path = os.path.join(PARENT_WORKDIR, "ml-js", "client-v0", "labels")
+    current_path = os.path.join(PARENT_WORKDIR, "ml-js", "labels")
 
     sub_folders = []
     for i in range(int(frames)):
