@@ -5,7 +5,7 @@ BaseModel = declarative_base()
 metadata = BaseModel.metadata
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
